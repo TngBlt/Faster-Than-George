@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://assets/Cartoon Background Background.tex" type="Texture" id=1]
 [ext_resource path="res://camera.gd" type="Script" id=2]
 [ext_resource path="res://World.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Avion.tscn" type="PackedScene" id=4]
+
+[sub_resource type="SegmentShape2D" id=1]
+
+custom_solver_bias = 0.0
+a = Vector2( 0.310898, -14.6482 )
+b = Vector2( 0.173049, 14.0996 )
 
 [node name="main_background" type="Control"]
 
@@ -17,7 +24,6 @@ margin/bottom = 40.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-editor/display_folded = true
 layer = -1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -37,7 +43,6 @@ motion/mirroring = Vector2( 0, 0 )
 
 [node name="background_sprite" type="Sprite" parent="ParallaxBackground/background"]
 
-transform/pos = Vector2( -2.27197, 0 )
 transform/scale = Vector2( 0.67, 0.67 )
 texture = ExtResource( 1 )
 centered = false
@@ -65,5 +70,36 @@ drag_margin/bottom = 0.2
 script/script = ExtResource( 2 )
 
 [node name="World" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 0, 100 )
+z/z = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( -11.9677, 301.381 )
+transform/scale = Vector2( 0.368443, 9.45263 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( -11.5522, 0, 0, 2.2178, 37.6567, 0.660026 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+
+transform/pos = Vector2( 37.6567, 0.660026 )
+transform/scale = Vector2( -11.5522, 2.2178 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Avion" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1434.86, 187.908 )
 
 
