@@ -100,6 +100,7 @@ _update_shape_index = 0
 
 [node name="Avion" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 1434.86, 187.908 )
+transform/pos = Vector2( 1605.05, 397.063 )
+transform/scale = Vector2( 0.5, 0.5 )
 
 
