@@ -1,49 +1,43 @@
 extends KinematicBody2D
 
 var input_direction = 0
-var direction = 1
+var direction = 0
 
-var speed = 0
+var speed_x = 0
+var speed_y = 0
+var velocity = Vector2()
 const MAX_SPEED = 600
-const ACCELERATION = 1000
-const DECELERATION = 2000
-var velocity = 0
+const ACCELERATION = 600
+const DECELERATION = 600
 
 func _ready():
 	set_process(true)
 	set_process_input(true)
-	pass
 	
 func _input(event):
-	var move_left = event.is_action_pressed("move_left")
-	var move_right = event.is_action_pressed("move_right")
-	var stop_moving = not Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right")
-	
-	if move_left:
-		input_direction = -1
-	elif move_right:
-		input_direction = 1
-	elif stop_moving:
-		input_direction = 0
-	
-	if move_left or move_right and input_direction:
-		if input_direction == - direction:
-			speed /= 3
-			direction = input_direction 
-
 	pass
-
 
 func _process(delta):
 	
-	#MOVEMENT
-	
+	 # INPUT
 	if input_direction:
-		speed += ACCELERATION * delta
+		direction = input_direction
+   
+	if Input.is_action_pressed("move_left"):
+		input_direction = -1
+	elif Input.is_action_pressed("move_right"):
+		input_direction = 1
 	else:
-		speed -= DECELERATION * delta	
-	speed = clamp(speed, 0, MAX_SPEED)
+		input_direction = 0
+	
+	# MOVEMENT
+	if input_direction == - direction:
+		speed_x /= 3
+	if input_direction:
+		speed_x += ACCELERATION * delta
+	else:
+		speed_x -= DECELERATION * delta
+	speed_x = clamp(speed_x, 0, MAX_SPEED)
 		
-	velocity = speed * delta * direction
-	move(Vector2(velocity, 0))
-	pass 
+	velocity.x = speed_x * delta * direction
+	move(velocity) 
