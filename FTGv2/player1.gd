@@ -32,8 +32,7 @@ func _fixed_process(delta):
 	
 	if movement:
 		direction = movement
-	# Add Gravity
-	velocity.y += GRAVITY * delta
+	
 	
 	# Increment time
 	jump_timer += delta
@@ -69,6 +68,8 @@ func _fixed_process(delta):
 	else:
 		velocity.x -= DECELERATION * delta
 	velocity.x = clamp(velocity.x, 0, MAX_SPEED)
+# Add Gravity
+	velocity.y += GRAVITY * delta
    
 
 	# Set movement speed
