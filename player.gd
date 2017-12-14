@@ -10,11 +10,17 @@ const MAX_SPEED = 600
 const ACCELERATION = 600
 const DECELERATION = 600
 
+
+const JUMP_FORCE = 800
+const GRAVITY = 2000
+
 func _ready():
 	set_process(true)
 	set_process_input(true)
 	
 func _input(event):
+	if event.is_action_pressed("jump"):
+		speed_y = -JUMP_FORCE
 	pass
 
 func _process(delta):
@@ -38,6 +44,18 @@ func _process(delta):
 	else:
 		speed_x -= DECELERATION * delta
 	speed_x = clamp(speed_x, 0, MAX_SPEED)
+	
+	speed_y += GRAVITY * delta
 		
 	velocity.x = speed_x * delta * direction
+	velocity.y = speed_y * delta
 	move(velocity) 
+	
+	
+	
+	
+	
+	
+	
+	
+	
