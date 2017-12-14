@@ -10,6 +10,7 @@ const MAX_SPEED = 600
 const ACCELERATION = 600
 const DECELERATION = 600
 
+
 func _ready():
 	set_process(true)
 	set_process_input(true)
@@ -18,7 +19,9 @@ func _input(event):
 	pass
 
 func _process(delta):
-	
+	if (is_colliding()):
+		print("COLLIDING WITH", get_collider())
+		
 	 # INPUT
 	if input_direction:
 		direction = input_direction
