@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://George inside the Car 2.tex" type="Texture" id=2]
@@ -8,12 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 8.29666 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 170, 45 )
 
 [sub_resource type="SpriteFrames" id=3]
 
@@ -24,41 +19,44 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="RigidBody2D"]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 15.9846, 0, 0, 6.14927, 461.02, 302.851 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.45546, 31.1488 )
 shapes/0/trigger = true
-shapes/1/shape = SubResource( 2 )
-shapes/1/transform = Matrix32( 3.07006, 0, 0, 3.2267, 440.942, 219.287 )
-shapes/1/trigger = true
 collision/layers = 1
 collision/mask = 1
-collision/margin = 0.08
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
 script/script = ExtResource( 1 )
+speed = 200
+acceleration = 5
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 
-transform/pos = Vector2( 451.969, 269.975 )
 frames = SubResource( 3 )
 animation = "default"
 script/script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 461.02, 302.851 )
-transform/scale = Vector2( 15.9846, 6.14927 )
+transform/pos = Vector2( 0.45546, 31.1488 )
 shape = SubResource( 1 )
 trigger = true
 _update_shape_index = 0
-
-[node name="CollisionShape2D 2" type="CollisionShape2D" parent="."]
-
-transform/pos = Vector2( 440.942, 219.287 )
-transform/scale = Vector2( 3.07006, 3.2267 )
-shape = SubResource( 2 )
-trigger = true
-_update_shape_index = 1
 
 
