@@ -1,9 +1,20 @@
+<<<<<<< HEAD
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Cartoon Background Background.tex" type="Texture" id=2]
 [ext_resource path="res://camera.gd" type="Script" id=3]
 [ext_resource path="res://Avion.tscn" type="PackedScene" id=4]
+=======
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://main_background.gd" type="Script" id=1]
+[ext_resource path="res://assets/Cartoon Background Background.tex" type="Texture" id=2]
+[ext_resource path="res://camera.gd" type="Script" id=3]
+[ext_resource path="res://Avion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Player1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://MilkyWay.tscn" type="PackedScene" id=6]
+>>>>>>> ee2452b7f368fbc7f0fcc89103c093644840b0df
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -12,9 +23,27 @@ extents = Vector2( 10000, 40 )
 
 [node name="main_background" type="Node2D"]
 
+<<<<<<< HEAD
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 transform/pos = Vector2( 358.309, 287.309 )
+=======
+custom_solver_bias = 0.0
+
+extents = Vector2( 48.9478, 14.4269 )
+
+[node name="main_background" type="Control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = ExtResource( 1 )
+>>>>>>> ee2452b7f368fbc7f0fcc89103c093644840b0df
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -62,17 +91,47 @@ drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
 script/script = ExtResource( 3 )
+<<<<<<< HEAD
 
+=======
+
+[node name="main_background" type="Node2D"]
+
+z/relative = false
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+transform/pos = Vector2( 52.6609, 0.660025 )
+transform/scale = Vector2( -13.6786, 2.2178 )
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+>>>>>>> ee2452b7f368fbc7f0fcc89103c093644840b0df
 [node name="Avion" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1605.05, 397.063 )
 transform/scale = Vector2( 0.5, 0.5 )
 
+<<<<<<< HEAD
 [node name="floor_background" type="StaticBody2D" parent="."]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 1207.64, 424.755 )
+=======
+[node name="Player" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 20.0421, 100.211 )
+
+
+[node name="floor_background" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 4901.82, 530.119 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+>>>>>>> ee2452b7f368fbc7f0fcc89103c093644840b0df
 shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
@@ -81,11 +140,34 @@ constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
 
+[node name="floor_background_sprite" type="Sprite" parent="floor_background"]
+
+texture = ExtResource( 2 )
+flip_v = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor_background"]
 
+<<<<<<< HEAD
 transform/pos = Vector2( 1207.64, 424.755 )
 shape = SubResource( 1 )
+=======
+shape = SubResource( 2 )
+>>>>>>> ee2452b7f368fbc7f0fcc89103c093644840b0df
 trigger = false
 _update_shape_index = 0
+
+[node name="Les MilkyWays" type="Node2D" parent="."]
+
+[node name="MilkyWay1" parent="Les MilkyWays" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 892.643, 376.584 )
+
+[node name="MilkyWay2" parent="Les MilkyWays" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1687.65, 94.8433 )
+
+[node name="MilkyWay3" parent="Les MilkyWays" instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 2164.66, 382.163 )
 
 

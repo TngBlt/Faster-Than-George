@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://MilkyWay.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/MilkyWay Sprite 1.png" type="Texture" id=2]
+[ext_resource path="res://Ressources/MilkyWay Sprite 2.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/MilkyWay Sprite 3.png" type="Texture" id=4]
+[ext_resource path="res://Ressources/MilkyWay Sprite 4.png" type="Texture" id=5]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.25
+} ]
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "Bouncing"
+length = 1.6
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:transform/pos")
+tracks/0/interp = 2
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.8, 1.6 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Area2D/CollisionShape2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0, 0.8, 1.6 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 5.742 ), Vector2( 0.440125, -3.83822 ), Vector2( 0, 5.742 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 10.6909
+
+[node name="MilkyWay" type="Node2D"]
+
+script/script = ExtResource( 1 )
+value = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+transform/pos = Vector2( 0, -5.13742 )
+transform/scale = Vector2( 0.0282317, 0.0282317 )
+frames = SubResource( 1 )
+animation = "default"
+playing = true
+
+[node name="Bouncing" type="AnimationPlayer" parent="."]
+
+process/pause_mode = 2
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Bouncing = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "Bouncing"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+transform/pos = Vector2( -0.880249, -4.8414 )
+input/pickable = true
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 3.14936, 0, 0, 3.00862, 0.204534, 1.2899 )
+shapes/0/trigger = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+transform/pos = Vector2( 0.204534, 1.2899 )
+transform/scale = Vector2( 3.14936, 3.00862 )
+shape = SubResource( 3 )
+trigger = true
+_update_shape_index = 0
+
+
