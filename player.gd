@@ -11,9 +11,12 @@ const ACCELERATION = 600
 const DECELERATION = 600
 
 
+<<<<<<< HEAD
 const JUMP_FORCE = 800
 const GRAVITY = 2000
 
+=======
+>>>>>>> 36198e1bc95ee04230f89343148e4e0742fbaad6
 func _ready():
 	set_process(true)
 	set_process_input(true)
@@ -24,7 +27,9 @@ func _input(event):
 	pass
 
 func _process(delta):
-	
+	if (is_colliding()):
+		print("COLLIDING WITH", get_collider())
+		
 	 # INPUT
 	if input_direction:
 		direction = input_direction
