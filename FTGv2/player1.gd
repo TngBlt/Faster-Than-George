@@ -1,14 +1,14 @@
 extends KinematicBody2D
 
 # Laws of Physics
-const GRAVITY = Vector2(0, 600)
+const GRAVITY = 2000
 
 # Movement Constants
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_FRICTION = 20
 const MOVEMENT_SPEED = 400
 const ACCELERATION = 0.8
-const JUMP_FORCE = 500
+const JUMP_FORCE = 1400
 const JUMP_TIME_THRESHOLD = 0.2 # seconds
 
 # Player Variables
@@ -24,7 +24,7 @@ func _ready():
 # Processing
 func _fixed_process(delta):
 	# Add Gravity
-	velocity += GRAVITY * delta
+	velocity.y += GRAVITY * delta
 	
 	# Increment time
 	jump_timer += delta
@@ -61,6 +61,6 @@ func _fixed_process(delta):
 	velocity.x = lerp(velocity.x, movement, ACCELERATION)
 	
 	# Input: Jump
-	if(can_jump && Input.is_action_pressed("ui_up")):
+	if(can_jump && Input.is_action_pressed("jump")):
 		velocity.y -= JUMP_FORCE
 		jump_timer = JUMP_TIME_THRESHOLD
