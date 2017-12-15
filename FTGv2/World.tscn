@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=5 format=1]
 
-[ext_resource path="res://main_background.gd" type="Script" id=1]
-[ext_resource path="res://player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://background.tscn" type="PackedScene" id=3]
-[ext_resource path="res://MilkyWay.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://background.tscn" type="PackedScene" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -18,9 +16,8 @@ extents = Vector2( 10, 270 )
 [node name="World" type="Node2D"]
 
 transform/pos = Vector2( -3, 0 )
-script/script = ExtResource( 1 )
 
-[node name="player" parent="." instance=ExtResource( 2 )]
+[node name="player" parent="." instance=ExtResource( 1 )]
 
 transform/pos = Vector2( 373.511, 285.115 )
 
@@ -66,16 +63,6 @@ shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
-
-[node name="Les MilkyWays" type="Node2D" parent="."]
-
-[node name="MilkyWay1" parent="Les MilkyWays" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 1207.86, 552.323 )
-
-[node name="MilkyWay2" parent="Les MilkyWays" instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 1492.39, 75.3168 )
+[node name="ParallaxBackground" parent="." instance=ExtResource( 2 )]
 
 
