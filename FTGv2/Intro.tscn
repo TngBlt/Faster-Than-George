@@ -33,6 +33,8 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+
 [connection signal="finished" from="Music" to="." method="_on_Music_finished"]
 
 

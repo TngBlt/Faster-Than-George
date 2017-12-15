@@ -10,3 +10,8 @@ func _ready():
 
 func _on_Music_finished():
 	get_tree().change_scene("res://Menu.tscn")
+
+
+func _on_input_event(ev):
+	if ev.type == InputEvent.MOUSE_BUTTON :
+		get_tree().change_scene("res://Menu.tscn")
