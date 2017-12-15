@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var NbTotalMilkyWay = 0
 var NbCollectedMilkyWay = 0
