@@ -11,6 +11,7 @@ func _ready():
 
 
 func _collectMilkyWay( body ):
-	get_owner().NbCollectedMilkyWay += value
-	print(get_owner().NbCollectedMilkyWay)
-	queue_free()
+	if body.get_name() == "player" :
+		get_owner().NbCollectedMilkyWay += value
+		print(get_owner().NbCollectedMilkyWay)
+		queue_free()

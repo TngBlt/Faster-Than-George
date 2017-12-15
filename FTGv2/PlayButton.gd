@@ -11,4 +11,4 @@ func on_pressed():
 	print("hello")
 
 func _on_PlayButton_pressed():
-	get_tree().change_scene("res://main_background.tscn")
+	get_tree().change_scene("res://background.tscn")
