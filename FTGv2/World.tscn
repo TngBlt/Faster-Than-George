@@ -15,6 +15,8 @@ extents = Vector2( 10, 270 )
 
 [node name="World" type="Node2D"]
 
+transform/pos = Vector2( -3, 0 )
+
 [node name="player" parent="." instance=ExtResource( 1 )]
 
 transform/pos = Vector2( 373.511, 285.115 )
