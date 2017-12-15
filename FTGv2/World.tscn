@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ground.tscn" type="PackedScene" id=2]
@@ -6,28 +6,58 @@
 [ext_resource path="res://background.tscn" type="PackedScene" id=4]
 [ext_resource path="res://right_block.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Avion.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10000, 35 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 270 )
 
 [node name="World" type="Node2D"]
+
+transform/pos = Vector2( -3, 0 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 
 transform/pos = Vector2( 373.511, 285.115 )
 
-[node name="ground" parent="." instance=ExtResource( 2 )]
+[node name="ground" type="StaticBody2D" parent="."]
 
-[node name="left_block" parent="." instance=ExtResource( 3 )]
+transform/pos = Vector2( 497.011, 702.28 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 6000, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
-[node name="ParallaxBackground" parent="." instance=ExtResource( 4 )]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
 
-scroll/limit_end = Vector2( 0, 2000 )
+transform/pos = Vector2( 6000, 0 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
-[node name="right_block" parent="." instance=ExtResource( 5 )]
+[node name="left_block" type="StaticBody2D" parent="."]
 
-[node name="Camera2D" parent="." instance=ExtResource( 6 )]
-
-[node name="Avion" parent="." instance=ExtResource( 7 )]
-
-transform/pos = Vector2( 2386.92, 428.81 )
+transform/pos = Vector2( -9.31799, 413.146 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 17.1883, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 
 
