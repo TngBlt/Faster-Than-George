@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://George inside the Car 2.tex" type="Texture" id=2]
+[ext_resource path="res://George inside the Car.tex" type="Texture" id=3]
+[ext_resource path="res://AnimatedScript.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+<<<<<<< HEAD
+extents = Vector2( 170, 47 )
+=======
+extents = Vector2( 170, 45 )
+>>>>>>> ee2452b7f368fbc7f0fcc89103c093644840b0df
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Player" type="RigidBody2D"]
+
+transform/pos = Vector2( 8.96503, -2.94847 )
+transform/scale = Vector2( 0.982576, 0.950372 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+<<<<<<< HEAD
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 2.46985, 29.5958 )
+=======
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.45546, 31.1488 )
+>>>>>>> ee2452b7f368fbc7f0fcc89103c093644840b0df
+shapes/0/trigger = true
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+script/script = ExtResource( 1 )
+speed = 200
+acceleration = 5
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 3 )
+animation = "default"
+script/script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+<<<<<<< HEAD
+transform/pos = Vector2( 2.46985, 29.5958 )
+=======
+transform/pos = Vector2( 0.45546, 31.1488 )
+>>>>>>> ee2452b7f368fbc7f0fcc89103c093644840b0df
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+
