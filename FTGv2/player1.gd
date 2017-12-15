@@ -10,7 +10,7 @@ const MOVEMENT_SPEED = 400
 const ACCELERATION = 0.8
 const ACCELERATIONN = 1200
 const DECELERATION = 2000
-const JUMP_FORCE = 1100
+const JUMP_FORCE = 1600
 const JUMP_TIME_THRESHOLD = 0.2 # seconds
 const MAX_SPEED = 600
 
@@ -21,7 +21,7 @@ var jump_timer = 0
 var direction = 0
 	# Movement
 var movement = 0
-
+export var health = 1
 
 # Start
 func _ready():
@@ -82,3 +82,10 @@ func _fixed_process(delta):
 	if(can_jump && Input.is_action_pressed("jump")):
 		velocity.y -= JUMP_FORCE
 		jump_timer = JUMP_TIME_THRESHOLD
+	if(is_colliding()):
+		if(get_collider().is_in_group("obstacle")):
+			print(get_collider())
+			health -= 1
+	if(health < 1):
+		get_tree().change_scene("res://gameOver.tscn")
+		
