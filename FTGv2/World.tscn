@@ -29,7 +29,6 @@ transform/pos = Vector2( 373.511, 285.115 )
 
 [node name="ground" type="StaticBody2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 497.011, 702.28 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
